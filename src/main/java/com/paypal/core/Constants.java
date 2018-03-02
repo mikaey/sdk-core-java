@@ -39,6 +39,9 @@ public final class Constants {
 	// PayPal Security Signature Header
 	public static final String PAYPAL_SECURITY_SIGNATURE_HEADER = "X-PAYPAL-SECURITY-SIGNATURE";
 
+	// PayPal Security Subject Header
+	public static final String PAYPAL_SECURITY_SUBJECT_HEADER = "X-PAYPAL-SECURITY-SUBJECT";
+
 	// PayPal Platform Authorization Header
 	public static final String PAYPAL_AUTHORIZATION_PLATFORM_HEADER = "X-PAYPAL-AUTHORIZATION";
 

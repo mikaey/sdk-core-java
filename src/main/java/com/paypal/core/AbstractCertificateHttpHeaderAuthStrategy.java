@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.paypal.core.credential.CertificateCredential;
 import com.paypal.core.credential.TokenAuthorization;
+import com.paypal.core.credential.SubjectAuthorization;
 import com.paypal.sdk.exceptions.OAuthException;
 
 /**
@@ -21,7 +22,7 @@ public abstract class AbstractCertificateHttpHeaderAuthStrategy implements
 
 	/**
 	 * AbstractCertificateHttpHeaderAuthStrategy
-	 * 
+	 *
 	 * @param endPointUrl
 	 *            Endpoint URL
 	 */
@@ -46,13 +47,17 @@ public abstract class AbstractCertificateHttpHeaderAuthStrategy implements
 					credential.getUserName());
 			headers.put(Constants.PAYPAL_SECURITY_PASSWORD_HEADER,
 					credential.getPassword());
+			if(credential.getThirdPartyAuthorization() instanceof SubjectAuthorization) {
+					headers.put(Constants.PAYPAL_SECURITY_SUBJECT_HEADER,
+							((SubjectAuthorization) credential.getThirdPartyAuthorization()).getSubject());
+			}
 		}
 		return headers;
 	}
 
 	/**
 	 * Process TokenAuthorization based on API format
-	 * 
+	 *
 	 * @param credential
 	 *            Instance of {@link CertificateCredential}
 	 * @param tokenAuth
